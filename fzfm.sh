@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 err() {
-    echo -e "$1" >&2
+    echo -e "ERROR: $1" >&2
     sleep 0.5
 }
 
@@ -46,9 +46,9 @@ while true; do
     fzf_mode=$(cat "$mode_file")
 
     bind_keys=$(build_bind_keys "$fzf_mode")
-    fzf_opts="--multi --height=70% --layout=reverse --style full --ansi --preview-window right:65%"
+    fzf_opts="--multi --height=80% --layout=reverse --style full --ansi --preview-window right:65%"
 
-    selected=$(eval "$find_cmd" | fzf $fzf_opts --preview="bash -c 'fzf_preview {}'" --bind "$bind_keys" --header-label ' [Mode] CWD ' --exit-0)
+    selected=$(eval "$find_cmd" | fzf $fzf_opts --bind "$bind_keys" --preview="bash -c 'fzf_preview {}'" --exit-0)
 
     # check if restart flag is up
     [[ -f "$restart_file" ]] && continue

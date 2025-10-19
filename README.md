@@ -4,7 +4,7 @@
 - [zathura](https://github.com/pwmt/zathura) (Optional: Only if you need pdf viewer)
 
 ## NORMAL Mode Commands
-### Motions
+### Navigation
 | Motions | Description |
 | :------ | :---------- |
 | `j` | Goes down an element |
@@ -13,26 +13,37 @@
 | `l` | Goes to child directory |
 | `J` | Preview Up |
 | `K` | Preview Down |
-| `i` | Switches to INSERT mode |
-| `q` | Quit |
+| `g` | Jump to first element |
+| `G` | Jump to last element |
 
 ### Operations
 > [!NOTE]
 > All of these operations can be done in bulk
 
-| Operations | Description |
+| Motions | Description |
 | :--------- | :---------- |
 | `t` | Create file in CWD |
 | `o` | Create dir in CWD |
 | `y` | Copy to specific location |
+| `r` | Rename selected item |
 | `m` | Moves to specific location |
 | `d` | Delete selected item |
 | `x` | Change permissions |
+| `i` | Switches to INSERT mode |
+| `q` | Quit |
 
 ## INSERT Mode Commands
+### Navigation
 | Motions | Description |
 | :------ | :---------- |
-|`ctrl-h`| Switches to NORMAL mode |
+| `ctrl-h` | Goes to parent directory |
+| `ctrl-l` | Goes to child directory |
+
+### Operations
+| Motions | Description |
+| :------ | :---------- |
+| `esc` | Switches to NORMAL mode |
+| `ctrl-q` | Quit |
 
 ## Config
 ### ENV
