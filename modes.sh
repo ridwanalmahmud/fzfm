@@ -26,6 +26,10 @@ fzf_normal() {
     return 0
 }
 
+# execute() -> executes a arbitrary command
+# use bash -c to execute a custom function
+# before using a function you need to export it with export -f
+# add custom functions in utils.h
 declare -A NORMAL_BINDINGS=(
     [j]="down"
     [k]="up"
@@ -47,6 +51,7 @@ declare -A INSERT_BINDINGS=(
     [ctrl-h]="execute(bash -c 'fzf_normal $mode_file && touch $restart_file')+abort"
 )
 
+# add mode specific bind_keys to fzf --bind-key
 build_bind_keys() {
     local mode=$1
     local -n bindings_ref="${mode}_BINDINGS"

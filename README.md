@@ -18,7 +18,7 @@
 
 ### Operations
 > [!NOTE]
-> All of this operations can be done in bulk
+> All of these operations can be done in bulk
 
 | Operations | Description |
 | :--------- | :---------- |
@@ -32,16 +32,20 @@
 ## INSERT Mode Commands
 | Motions | Description |
 | :------ | :---------- |
-|`ctrl-t`| Switches to NORMAL mode |
+|`ctrl-h`| Switches to NORMAL mode |
 
 ## Config
-- To add custom keybinds or change the default ones check modes.sh
-- Additional fzf options can be added in fzfm.sh with the fzf_opts var `fzf_opts="${options}"`
+### ENV
 - Text files will be opened in `$FZFM_EDITOR` (default: `$EDITOR`)
 - PDF files will be opened in `$FZFM_PDF_READER` (default: `zathura`)
+### Keybinds
+- To add custom keybinds or change the default ones check `modes.sh`
+### fzf opts
+- Additional fzf options can be added in `fzfm.sh` with the `fzf_opts` variable `fzf_opts="${options}"`
 
 > [!NOTE]
 > Remove the --ansi to get better performance
 
 ## Issues
 - Needs to restart fzf to change modes
+- Trying to cd into a dir in the main shell but can't find a way
