@@ -1,16 +1,18 @@
 ## Prerequisites
-- [fzf](https://github.com/junegunn/fzf) (Core)
-- [bat](https://github.com/sharkdp/bat) (Optional: For colored preview)
-- [zathura](https://github.com/pwmt/zathura) (Optional: Only if you need pdf viewer)
+- [`fzf`](https://github.com/junegunn/fzf) (Core)
+- [`bat`](https://github.com/sharkdp/bat) (Optional: For colored preview)
+- [`zathura`](https://github.com/pwmt/zathura) (Optional: Only if you need pdf viewer)
+- `zip` && `unzip` (Needed)
 
 ## NORMAL Mode Commands
 ### Navigation
 | Motions | Description |
 | :------ | :---------- |
-| `j` | Goes down an element |
-| `k` | Goes up an element |
-| `h` | Goes to parent directory |
-| `l` | Goes to child directory |
+| `j` | Jump to the next element |
+| `k` | Jump to the previous element |
+| `h` | cd into parent directory |
+| `l` | cd into child directory |
+| `n` | Relative jump |
 | `J` | Preview Up |
 | `K` | Preview Down |
 | `g` | Jump to first element |
@@ -22,13 +24,16 @@
 
 | Motions | Description |
 | :--------- | :---------- |
-| `t` | Create file in CWD |
+| `e` | Create file in CWD |
 | `o` | Create dir in CWD |
 | `y` | Copy to specific location |
 | `r` | Rename selected item |
 | `m` | Moves to specific location |
 | `d` | Delete selected item |
 | `x` | Change permissions |
+| `z` | `zip` files |
+| `t` | `tar` with compression |
+| `u` | Extract archived files |
 | `i` | Switches to INSERT mode |
 | `q` | Quit |
 
@@ -51,8 +56,6 @@
 - PDF files will be opened in `$FZFM_PDF_READER` (default: `zathura`)
 ### Keybinds
 - To add custom keybinds or change the default ones check `modes.sh`
-### fzf opts
-- Additional fzf options can be added in `fzfm.sh` with the `fzf_opts` variable `fzf_opts="${options}"`
 
 > [!NOTE]
 > Remove the --ansi to get better performance

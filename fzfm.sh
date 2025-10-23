@@ -16,7 +16,7 @@ fzf_preview() {
 
 fzf_file_handlers() {
     local selected="$1"
-    local mime=$(file --mime-type -b "$selected")
+    local mime=$(file -L --mime-type -b "$selected")
 
     case "$mime" in
     text/* | application/json | application/octet-stream)
@@ -35,8 +35,10 @@ fzf_file_handlers() {
 }
 
 export -f err fzf_preview
-source $DOTFILES/scripts/fzfm/utils.sh
-source $DOTFILES/scripts/fzfm/modes.sh
+
+curr_dir=$(dirname "$0")
+source $curr_dir/utils.sh
+source $curr_dir/modes.sh
 
 while true; do
     # cleanup previous restart flags
@@ -46,9 +48,14 @@ while true; do
     fzf_mode=$(cat "$mode_file")
 
     bind_keys=$(build_bind_keys "$fzf_mode")
-    fzf_opts="--multi --height=80% --layout=reverse --style full --ansi --preview-window right:65%"
+    fzf_opts="--multi --height=80% --layout=reverse --style full --ansi --border --preview-window right:65%"
+    if [[ "$fzf_mode" == "NORMAL" ]]; then
+        fzf_opts+=" --disabled"
+    fi
 
-    selected=$(eval "$find_cmd" | fzf $fzf_opts --bind "$bind_keys" --preview="bash -c 'fzf_preview {}'" --exit-0)
+    selected=$(eval "$find_cmd" | fzf $fzf_opts --input-label=" $fzf_mode " --border-label=" $(pwd)/ " \
+        --bind "focus:transform-header:stat -c %A {}" \
+        --bind "$bind_keys" --preview="bash -c 'fzf_preview {}'" --exit-0)
 
     # check if restart flag is up
     [[ -f "$restart_file" ]] && continue
